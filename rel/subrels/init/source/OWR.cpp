@@ -156,12 +156,10 @@ namespace mod::owr
         writeIntWithCache(&main_mapGX[240], 0x2C030010); // cmpwi r3, 0xF
 
         patch::writeBranchPair(&main_mapGX[90],
-                               reinterpret_cast<void *>(bMapGXArrPtrInit),
-                               reinterpret_cast<void *>(bMapGXArrPtrInitReturn));
-
-        patch::writeBranchPair(&main_mapGX[91],
                                reinterpret_cast<void *>(bMapGXArrInject),
                                reinterpret_cast<void *>(bMapGXArrInjectReturn));
+
+        writeIntWithCache(&main_mapGX[91], 0x60000000); // nop
 
         patch::writeBranchPair(&main_mapGX[235],
                                reinterpret_cast<void *>(bMapGXArrIncrement),
@@ -216,12 +214,10 @@ namespace mod::owr
         writeIntWithCache(&main_winLogMain[297], 0x2C030001); // cmpwi r3, 0x1
 
         patch::writeBranchPair(&main_winLogMain[431],
-                               reinterpret_cast<void *>(bWinLogArrPtrInit),
-                               reinterpret_cast<void *>(bWinLogArrPtrInitReturn));
-
-        patch::writeBranchPair(&main_winLogMain[432],
                                reinterpret_cast<void *>(bWinLogArrInject),
                                reinterpret_cast<void *>(bWinLogArrInjectReturn));
+
+        writeIntWithCache(&main_winLogMain[432], 0x60000000); // nop
 
         patch::writeBranchPair(&main_winLogMain[505],
                                reinterpret_cast<void *>(bWinLogArrIncrement),
